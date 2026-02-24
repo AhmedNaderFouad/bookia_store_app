@@ -11,8 +11,24 @@
 
 import 'package:flutter/widgets.dart';
 
+class $AssetsFontsGen {
+  const $AssetsFontsGen();
+
+  /// File path: assets/fonts/DMSerifDisplay-Italic.ttf
+  String get dMSerifDisplayItalic => 'assets/fonts/DMSerifDisplay-Italic.ttf';
+
+  /// File path: assets/fonts/DMSerifDisplay-Regular.ttf
+  String get dMSerifDisplayRegular => 'assets/fonts/DMSerifDisplay-Regular.ttf';
+
+  /// List of all assets
+  List<String> get values => [dMSerifDisplayItalic, dMSerifDisplayRegular];
+}
+
 class $AssetsIconsGen {
   const $AssetsIconsGen();
+
+  /// File path: assets/icons/eye_icon.svg
+  String get eyeIcon => 'assets/icons/eye_icon.svg';
 
   /// File path: assets/icons/logo.svg
   String get logo => 'assets/icons/logo.svg';
@@ -21,25 +37,47 @@ class $AssetsIconsGen {
   String get successIcon => 'assets/icons/success_icon.svg';
 
   /// List of all assets
-  List<String> get values => [logo, successIcon];
+  List<String> get values => [eyeIcon, logo, successIcon];
 }
 
 class $AssetsImagesGen {
   const $AssetsImagesGen();
+
+  /// File path: assets/images/logo.png
+  AssetGenImage get logo => const AssetGenImage('assets/images/logo.png');
+
+  /// File path: assets/images/splash_android_12.png
+  AssetGenImage get splashAndroid12 =>
+      const AssetGenImage('assets/images/splash_android_12.png');
 
   /// File path: assets/images/splash_background.png
   AssetGenImage get splashBackground =>
       const AssetGenImage('assets/images/splash_background.png');
 
   /// List of all assets
-  List<AssetGenImage> get values => [splashBackground];
+  List<AssetGenImage> get values => [logo, splashAndroid12, splashBackground];
+}
+
+class $AssetsTranslationsGen {
+  const $AssetsTranslationsGen();
+
+  /// File path: assets/translations/ar.json
+  String get ar => 'assets/translations/ar.json';
+
+  /// File path: assets/translations/en.json
+  String get en => 'assets/translations/en.json';
+
+  /// List of all assets
+  List<String> get values => [ar, en];
 }
 
 class Assets {
   const Assets._();
 
+  static const $AssetsFontsGen fonts = $AssetsFontsGen();
   static const $AssetsIconsGen icons = $AssetsIconsGen();
   static const $AssetsImagesGen images = $AssetsImagesGen();
+  static const $AssetsTranslationsGen translations = $AssetsTranslationsGen();
 }
 
 class AssetGenImage {

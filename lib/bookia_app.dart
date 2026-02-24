@@ -1,4 +1,5 @@
 import 'package:bookia_store_app/features/authentication/presentation/login_screen.dart';
+import 'package:bookia_store_app/features/on_boarding/presentation/welcome_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -17,7 +18,7 @@ class BookiaApp extends StatelessWidget {
         supportedLocales: context.supportedLocales,
         locale: context.locale,
         theme: ThemeData(fontFamily: "DMSerifDisplay"),
-        home: LoginScreen(),
+        home: WelcomeScreen(),
       ),
     );
   }

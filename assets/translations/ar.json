@@ -1,0 +1,11 @@
+{
+  "hello": "مرحبا",
+  "Login": "تسجيل الدخول",
+  "welcome": "أهلاً بك",
+  "on_Boarding_Statement": "اطلب كتابك الان!",
+  "Register": "إنشاء حساب",
+  "welcome_Statement" : "مرحبًا بعودتك! سعداء برؤيتك مرة أخرى",
+  "forgot_password": "هل نسيت كلمه المرور؟",
+  "enter_your_email": "أدخل بريدك الإلكتروني",
+  "enter_your_password": "أدخل كلمة المرور"
+}
