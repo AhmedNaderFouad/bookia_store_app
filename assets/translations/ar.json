@@ -7,5 +7,10 @@
   "welcome_Statement" : "مرحبًا بعودتك! سعداء برؤيتك مرة أخرى",
   "forgot_password": "هل نسيت كلمه المرور؟",
   "enter_your_email": "أدخل بريدك الإلكتروني",
-  "enter_your_password": "أدخل كلمة المرور"
+  "enter_your_password": "أدخل كلمة المرور",
+  "enter_your_username": "ادخل اسم المستخدم",
+  "confirm_password": "تاكيد كلمه المرور",
+  "register_page_statement": "مرحباً! سجل الآن للبدء",
+  "account_already_have": "هل لديك حساب بالفعل ؟",
+  "login_now": "سجل الدخول الآن"
 }

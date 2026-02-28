@@ -10,11 +10,13 @@ class AppTextFormFiled extends StatefulWidget {
   final String? hintText;
   final bool isPassword;
   final TextInputType? keyboardType;
+  final TextEditingController? controller;
+
   const AppTextFormFiled({
     super.key,
     this.hintText,
     this.isPassword = false,
-    this.keyboardType,
+    this.keyboardType, this.controller,
   });
 
   @override
@@ -27,6 +29,7 @@ class _AppTextFormFiledState extends State<AppTextFormFiled> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      controller: widget.controller,
       keyboardType: widget.keyboardType,
       cursorColor: AppColor.primaryColor,
       obscureText: widget.isPassword && isObscure,

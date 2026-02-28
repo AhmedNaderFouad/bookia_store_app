@@ -12,5 +12,10 @@ abstract class  LocaleKeys {
   static const forgot_password = 'forgot_password';
   static const enter_your_email = 'enter_your_email';
   static const enter_your_password = 'enter_your_password';
+  static const enter_your_username = 'enter_your_username';
+  static const confirm_password = 'confirm_password';
+  static const register_page_statement = 'register_page_statement';
+  static const account_already_have = 'account_already_have';
+  static const login_now = 'login_now';
 
 }

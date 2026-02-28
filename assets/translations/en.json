@@ -7,5 +7,10 @@
   "welcome_Statement": "Welcome Back! Glad To See You Again",
   "forgot_password": "Forgot Password?",
   "enter_your_email": "Enter Your Email",
-  "enter_your_password": "Enter Your Password"
+  "enter_your_password": "Enter Your Password",
+  "enter_your_username": "Username",
+  "confirm_password": "Confirm Password",
+  "register_page_statement": "Hello! Register To Get Started",
+  "account_already_have": "Already have an account ?",
+  "login_now": "Login Now"
 }

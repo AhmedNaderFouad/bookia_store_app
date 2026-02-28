@@ -3,9 +3,12 @@ import 'package:bookia_store_app/core/widgets/app_button.dart';
 import 'package:bookia_store_app/gen/locale_keys.g.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../gen/assets.gen.dart';
+import '../../authentication/cubit/auth_cubit.dart';
 import '../../authentication/presentation/login_screen.dart';
+import '../../authentication/presentation/register_screen.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
@@ -17,7 +20,9 @@ class WelcomeScreen extends StatelessWidget {
         width: double.infinity,
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: Assets.images.splashBackground.image().image,
+            image: Assets.images.splashBackground
+                .image()
+                .image,
             fit: BoxFit.cover,
           ),
         ),
@@ -50,14 +55,26 @@ class WelcomeScreen extends StatelessWidget {
                 textAlign: TextAlign.center,
               ),
               const Spacer(),
-              AppButton(title: LocaleKeys.Login.tr(),
-              onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context)=> LoginScreen()));
-              }),
+              AppButton(
+                title: LocaleKeys.Login.tr(),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) =>
+                        BlocProvider(
+                          create: (context) => AuthCubit(),
+                          child: LoginScreen(),
+                        )),
+                  );
+                },
+              ),
               SizedBox(height: 15.h),
               AppButton(
                 title: LocaleKeys.Register.tr(),
                 backgroundColor: Colors.white,
+                onTap: (){
+                   Navigator.push(context, MaterialPageRoute(builder: (context) => RegisterScreen()));
+                },
               ),
               SizedBox(height: 94.h),
             ],
