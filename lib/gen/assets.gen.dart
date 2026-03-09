@@ -27,17 +27,49 @@ class $AssetsFontsGen {
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
+  /// File path: assets/icons/apple_icon.svg
+  String get appleIcon => 'assets/icons/apple_icon.svg';
+
+  /// File path: assets/icons/bookmark.svg
+  String get bookmark => 'assets/icons/bookmark.svg';
+
+  /// File path: assets/icons/category.svg
+  String get category => 'assets/icons/category.svg';
+
   /// File path: assets/icons/eye_icon.svg
   String get eyeIcon => 'assets/icons/eye_icon.svg';
 
+  /// File path: assets/icons/google_icon.svg
+  String get googleIcon => 'assets/icons/google_icon.svg';
+
+  /// File path: assets/icons/home.svg
+  String get home => 'assets/icons/home.svg';
+
   /// File path: assets/icons/logo.svg
   String get logo => 'assets/icons/logo.svg';
+
+  /// File path: assets/icons/profile.svg
+  String get profile => 'assets/icons/profile.svg';
+
+  /// File path: assets/icons/search_icon.svg
+  String get searchIcon => 'assets/icons/search_icon.svg';
 
   /// File path: assets/icons/success_icon.svg
   String get successIcon => 'assets/icons/success_icon.svg';
 
   /// List of all assets
-  List<String> get values => [eyeIcon, logo, successIcon];
+  List<String> get values => [
+    appleIcon,
+    bookmark,
+    category,
+    eyeIcon,
+    googleIcon,
+    home,
+    logo,
+    profile,
+    searchIcon,
+    successIcon,
+  ];
 }
 
 class $AssetsImagesGen {

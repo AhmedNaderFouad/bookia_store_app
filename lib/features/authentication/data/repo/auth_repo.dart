@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class  AuthRepo {
  static final Dio _dio = Dio();
@@ -12,6 +13,8 @@ class  AuthRepo {
       );
 
       if (response.statusCode == 200) {
+
+        await saveToken(response.data["data"]["token"].toString());
         return true;
       } else {
         return false;
@@ -21,4 +24,14 @@ class  AuthRepo {
       return false;
     }
   }
+
+
+
+  static saveToken(String token) async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+     await prefs.setString('token', token);
+  }
+
+
+
 }

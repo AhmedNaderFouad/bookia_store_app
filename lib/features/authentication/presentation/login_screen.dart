@@ -6,11 +6,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../core/helper/extensions.dart';
 import '../../../core/routing/routes.dart';
 import '../../../core/theme/app_color.dart';
 import '../../../core/widgets/app_button.dart';
+import '../../../gen/assets.gen.dart';
 import '../../../gen/locale_keys.g.dart';
 import '../cubit/auth_cubit.dart';
+import '../data/models/social_login_button.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -97,7 +100,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       );
                     } else if (state is AuthErrorState) {
-                      Navigator.pop(context); // Pop loading dialog
+                      Navigator.pop(context);
                       showDialog(
                         context: context,
                         builder: (context) {
@@ -110,12 +113,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         },
                       );
                     } else if (state is AuthSuccessSate) {
-                      Navigator.pop(context); // Pop loading dialog
-                      Navigator.pushNamedAndRemoveUntil(
-                        context,
-                        Routes.homeScreen,
-                        (route) => false,
-                      );
+                      context.pushNamedAndRemoveUntil(Routes.homeScreen, false);
                     }
                   },
                   child: AppButton(
@@ -127,6 +125,73 @@ class _LoginScreenState extends State<LoginScreen> {
                       );
                     },
                   ),
+                ),
+                SizedBox(height: 35.h),
+                Row(
+                  children: [
+                    Expanded(
+                      child: Divider(
+                        color: const Color(0xffE8ECF4),
+                        thickness: 1.h,
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 10.w),
+                      child: Text(
+                        LocaleKeys.or.tr(),
+                        style: const TextStyle(
+                          color: Color(0xff6A707C),
+                          fontWeight: FontWeight.w600,
+                          fontSize: 14,
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: Divider(
+                        color: const Color(0xffE8ECF4),
+                        thickness: 1.h,
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 22.h),
+                SocialLoginButton(
+                  title: LocaleKeys.google_login.tr(),
+                  iconPath: Assets.icons.googleIcon,
+                  onTap: () {},
+                ),
+                SizedBox(height: 15.h),
+                SocialLoginButton(
+                  title: LocaleKeys.apple_login.tr(),
+                  iconPath: Assets.icons.appleIcon,
+                  onTap: () {},
+                ),
+                SizedBox(height: 84.h),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      LocaleKeys.dont_have_account.tr(),
+                      style: const TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    SizedBox(width: 5.w),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.pushNamed(context, Routes.registerScreen);
+                      },
+                      child: Text(
+                        LocaleKeys.register_now.tr(),
+                        style: const TextStyle(
+                          color: Color(0xffB28E5E),
+                          fontWeight: FontWeight.w700,
+                          fontSize: 15,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),

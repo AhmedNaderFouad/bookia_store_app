@@ -10,7 +10,7 @@ class AuthCubit extends Cubit<AuthState> {
 
   void login({required String email, required String password}) async {
     emit(AuthLoadingState());
-    final response = await AuthRepo.login(email: "email", password: "password");
+    final response = await AuthRepo.login(email: email, password: password);
     if (response) {
       emit(AuthSuccessSate());
     } else {

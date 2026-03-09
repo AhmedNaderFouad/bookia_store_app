@@ -6,7 +6,9 @@ import 'core/routing/app_router.dart';
 import 'core/routing/routes.dart';
 
 class BookiaApp extends StatelessWidget {
-  const BookiaApp({super.key});
+  final String? token;
+
+  const BookiaApp({super.key, this.token});
 
   @override
   Widget build(BuildContext context) {
@@ -22,9 +24,17 @@ class BookiaApp extends StatelessWidget {
           theme: ThemeData(fontFamily: "DMSerifDisplay"),
           debugShowCheckedModeBanner: false,
           onGenerateRoute: AppRouter().generateRoute,
-          initialRoute: Routes.welcomeScreen,
+          initialRoute: startRoute(),
         );
       },
     );
+  }
+
+  String startRoute() {
+    if (token == null || token!.isEmpty) {
+      return Routes.welcomeScreen;
+    } else {
+      return Routes.bottomNavBarScreen;
+    }
   }
 }

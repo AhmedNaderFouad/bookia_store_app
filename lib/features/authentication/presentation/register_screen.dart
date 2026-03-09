@@ -23,7 +23,7 @@ class RegisterScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const AppBackButton(),
+                AppBackButton(),
                 SizedBox(height: 22.h),
                 Text(
                   LocaleKeys.register_page_statement.tr(),

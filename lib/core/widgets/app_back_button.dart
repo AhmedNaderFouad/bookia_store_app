@@ -8,8 +8,10 @@ class AppBackButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: (){
-        Navigator.pop(context);
+      onTap: () {
+        if (Navigator.canPop(context)) {
+          Navigator.pop(context);
+        }
       },
       child: Container(
         padding: EdgeInsets.all(12.r),
@@ -17,8 +19,7 @@ class AppBackButton extends StatelessWidget {
           border: Border.all(color: AppColor.borderColor),
           borderRadius: BorderRadius.circular(12.r),
         ),
-        child: Icon(Icons.arrow_back_ios, ),
-        
+        child: const Icon(Icons.arrow_back_ios),
       ),
     );
   }

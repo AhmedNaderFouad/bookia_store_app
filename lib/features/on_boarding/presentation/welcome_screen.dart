@@ -1,3 +1,4 @@
+import 'package:bookia_store_app/core/helper/extensions.dart';
 import 'package:bookia_store_app/core/theme/app_text_style.dart';
 import 'package:bookia_store_app/core/widgets/app_button.dart';
 import 'package:bookia_store_app/gen/locale_keys.g.dart';
@@ -21,52 +22,59 @@ class WelcomeScreen extends StatelessWidget {
             fit: BoxFit.cover,
           ),
         ),
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 22.0.w),
-          child: Column(
-            children: [
-              SizedBox(height: 50.h),
-              Row(
-                children: [
-                  const Spacer(),
-                  InkWell(
-                    onTap: () {
-                      if (context.locale.languageCode == "ar") {
-                        context.setLocale(const Locale("en"));
-                      } else {
-                        context.setLocale(const Locale("ar"));
-                      }
-                    },
-                    child: const Icon(Icons.language),
-                  ),
-                ],
+        child: CustomScrollView(
+          slivers: [
+            SliverFillRemaining(
+              hasScrollBody: false,
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 22.0.w),
+                child: Column(
+                  children: [
+                    SizedBox(height: 50.h),
+                    Row(
+                      children: [
+                        const Spacer(),
+                        InkWell(
+                          onTap: () {
+                            if (context.locale.languageCode == "ar") {
+                              context.setLocale(const Locale("en"));
+                            } else {
+                              context.setLocale(const Locale("ar"));
+                            }
+                          },
+                          child: const Icon(Icons.language),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 153.h),
+                    Assets.images.logo.image(),
+                    SizedBox(height: 28.h),
+                    Text(
+                      LocaleKeys.on_Boarding_Statement.tr(),
+                      style: AppTextStyle.text20Regular,
+                      textAlign: TextAlign.center,
+                    ),
+                    const Spacer(),
+                    AppButton(
+                      title: LocaleKeys.Login.tr(),
+                      onTap: () {
+                        context.pushNamed(Routes.loginScreen);
+                      },
+                    ),
+                    SizedBox(height: 15.h),
+                    AppButton(
+                      title: LocaleKeys.Register.tr(),
+                      backgroundColor: Colors.white,
+                      onTap: () {
+                        Navigator.pushNamed(context, Routes.registerScreen);
+                      },
+                    ),
+                    SizedBox(height: 94.h),
+                  ],
+                ),
               ),
-              SizedBox(height: 153.h),
-              Assets.images.logo.image(),
-              SizedBox(height: 28.h),
-              Text(
-                LocaleKeys.on_Boarding_Statement.tr(),
-                style: AppTextStyle.text20Regular,
-                textAlign: TextAlign.center,
-              ),
-              const Spacer(),
-              AppButton(
-                title: LocaleKeys.Login.tr(),
-                onTap: () {
-                  Navigator.pushNamed(context, Routes.loginScreen);
-                },
-              ),
-              SizedBox(height: 15.h),
-              AppButton(
-                title: LocaleKeys.Register.tr(),
-                backgroundColor: Colors.white,
-                onTap: () {
-                  Navigator.pushNamed(context, Routes.registerScreen);
-                },
-              ),
-              SizedBox(height: 94.h),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
