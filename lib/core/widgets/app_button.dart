@@ -7,19 +7,24 @@ import '../theme/app_color.dart';
 import '../theme/app_text_style.dart';
 
 class AppButton extends StatelessWidget {
-  const AppButton({super.key, required this.title, this.backgroundColor, this.onTap});
+  const AppButton({
+    super.key,
+    required this.title,
+    this.backgroundColor,
+    this.onTap,
+  });
   final String title;
   final Color? backgroundColor;
   final void Function()? onTap;
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap:onTap,
+      onTap: onTap,
       child: Container(
         width: double.infinity,
         padding: EdgeInsets.symmetric(vertical: 14.h),
         alignment: Alignment.center,
-      
+
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8.r),
           color: backgroundColor ?? AppColor.primaryColor,
@@ -32,7 +37,9 @@ class AppButton extends StatelessWidget {
         child: Text(
           title,
           style: AppTextStyle.text15Regular.copyWith(
-            color: backgroundColor == Colors.white ? Colors.black : Colors.white,
+            color: backgroundColor == Colors.white
+                ? Colors.black
+                : Colors.white,
           ),
         ),
       ),

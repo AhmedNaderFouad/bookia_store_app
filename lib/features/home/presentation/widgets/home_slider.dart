@@ -20,9 +20,9 @@ class _HomeSliderState extends State<HomeSlider> {
   Widget build(BuildContext context) {
     return BlocBuilder<HomeCubit, HomeState>(
       builder: (context, state) {
-        if (state is GetHomeSliderLoading) {
+        if (state.isSliderLoading) {
           return const Center(child: CircularProgressIndicator());
-        } else if (state is GetHomeSliderSuccess) {
+        } else if (state.sliders.isNotEmpty) {
           return Column(
             children: [
               CarouselSlider(
@@ -38,13 +38,13 @@ class _HomeSliderState extends State<HomeSlider> {
                   enableInfiniteScroll: true,
                   enlargeCenterPage: true,
                 ),
-                items: List.generate(state.slider.length, (index) {
+                items: state.sliders.map((i) {
                   return Padding(
                     padding: EdgeInsets.symmetric(horizontal: 5.w),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(8),
                       child: Image.network(
-                        state.slider[index].image ?? "",
+                        i.image ?? "",
                         fit: BoxFit.cover,
                         width: double.infinity,
                       ),
@@ -55,7 +55,7 @@ class _HomeSliderState extends State<HomeSlider> {
               SizedBox(height: 14.h),
               AnimatedSmoothIndicator(
                 activeIndex: activeIndex,
-                count: state.slider.length,
+                count: state.sliders.length,
                 effect: ExpandingDotsEffect(
                   dotHeight: 7.h,
                   dotWidth: 7.w,
@@ -64,7 +64,7 @@ class _HomeSliderState extends State<HomeSlider> {
               ),
             ],
           );
-        } else if (state is GetHomeSliderError) {
+        } else if (state.sliderError != null) {
           return const Center(child: Text("Error"));
         }
         return const SizedBox();

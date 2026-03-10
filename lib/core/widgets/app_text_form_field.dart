@@ -16,7 +16,8 @@ class AppTextFormFiled extends StatefulWidget {
     super.key,
     this.hintText,
     this.isPassword = false,
-    this.keyboardType, this.controller,
+    this.keyboardType,
+    this.controller,
   });
 
   @override

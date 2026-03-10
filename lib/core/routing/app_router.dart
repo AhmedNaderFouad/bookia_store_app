@@ -10,6 +10,7 @@ import '../../features/authentication/presentation/otp_screen.dart';
 import '../../features/authentication/presentation/password_changed_screen.dart';
 import '../../features/authentication/presentation/register_screen.dart';
 import '../../features/bottom_nav_bar/presentation/bottom_nav_bar_screen.dart';
+import '../../features/home/cubit/home_cubit.dart';
 import '../../features/home/presentation/home_screen.dart';
 import '../../features/on_boarding/presentation/welcome_screen.dart';
 
@@ -33,35 +34,35 @@ class AppRouter {
           ),
         );
       case Routes.forgotPasswordScreen:
-        return MaterialPageRoute(
-          builder: (_) => const ForgotPasswordScreen(),
-        );
+        return MaterialPageRoute(builder: (_) => const ForgotPasswordScreen());
       case Routes.otpScreen:
-        return MaterialPageRoute(
-          builder: (_) => const OtpScreen(),
-        );
+        return MaterialPageRoute(builder: (_) => const OtpScreen());
       case Routes.createPasswordScreen:
-        return MaterialPageRoute(
-          builder: (_) => const CreatePasswordScreen(),
-        );
+        return MaterialPageRoute(builder: (_) => const CreatePasswordScreen());
       case Routes.passwordChangedScreen:
-        return MaterialPageRoute(
-          builder: (_) => const PasswordChangedScreen(),
-        );
+        return MaterialPageRoute(builder: (_) => const PasswordChangedScreen());
       case Routes.homeScreen:
-        return MaterialPageRoute(builder: (_) => const HomeScreen());
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) => HomeCubit()..getHomeData(),
+            child: const HomeScreen(),
+          ),
+        );
 
-
-        case Routes.bottomNavBarScreen:
-        return MaterialPageRoute(builder: (_) => const BottomNavBarScreen());
+      case Routes.bottomNavBarScreen:
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) => HomeCubit()..getHomeData(),
+            child: const BottomNavBarScreen(),
+          ),
+        );
 
       default:
         return MaterialPageRoute(
-            builder: (_) => Scaffold(
-                  body: Center(
-                    child: Text('No route defined for ${settings.name}'),
-                  ),
-                ));
+          builder: (_) => Scaffold(
+            body: Center(child: Text('No route defined for ${settings.name}')),
+          ),
+        );
     }
   }
 }

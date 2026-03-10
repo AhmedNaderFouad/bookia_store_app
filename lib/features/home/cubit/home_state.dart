@@ -1,15 +1,37 @@
 part of 'home_cubit.dart';
 
-@immutable
-sealed class HomeState {}
+class HomeState {
+  final List<SliderImage> sliders;
+  final List<ProductModel> bestSellers;
+  final bool isSliderLoading;
+  final bool isBestSellerLoading;
+  final String? sliderError;
+  final String? bestSellerError;
 
-final class HomeInitial extends HomeState {}
+  HomeState({
+    this.sliders = const [],
+    this.bestSellers = const [],
+    this.isSliderLoading = false,
+    this.isBestSellerLoading = false,
+    this.sliderError,
+    this.bestSellerError,
+  });
 
-final class GetHomeSliderLoading extends HomeState {}
-
-final class GetHomeSliderSuccess extends HomeState {
-  final List<SliderImage> slider;
-  GetHomeSliderSuccess(this.slider);
+  HomeState copyWith({
+    List<SliderImage>? sliders,
+    List<ProductModel>? bestSellers,
+    bool? isSliderLoading,
+    bool? isBestSellerLoading,
+    String? sliderError,
+    String? bestSellerError,
+  }) {
+    return HomeState(
+      sliders: sliders ?? this.sliders,
+      bestSellers: bestSellers ?? this.bestSellers,
+      isSliderLoading: isSliderLoading ?? this.isSliderLoading,
+      isBestSellerLoading: isBestSellerLoading ?? this.isBestSellerLoading,
+      sliderError: sliderError ?? this.sliderError,
+      bestSellerError: bestSellerError ?? this.bestSellerError,
+    );
+  }
 }
-
-final class GetHomeSliderError extends HomeState {}

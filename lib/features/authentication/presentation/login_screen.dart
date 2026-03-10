@@ -113,7 +113,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         },
                       );
                     } else if (state is AuthSuccessSate) {
-                      context.pushNamedAndRemoveUntil(Routes.homeScreen, false);
+                      context.pushNamedAndRemoveUntil(Routes.bottomNavBarScreen, (route) => false);
                     }
                   },
                   child: AppButton(

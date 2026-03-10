@@ -66,7 +66,7 @@ class ForgotPasswordScreen extends StatelessWidget {
                     },
                     child: Text(
                       LocaleKeys.Login.tr(),
-                      style:  TextStyle(
+                      style: TextStyle(
                         color: AppColor.primaryColor,
                         fontWeight: FontWeight.w700,
                         fontSize: 15,
