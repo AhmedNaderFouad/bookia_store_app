@@ -1,4 +1,3 @@
-import 'package:bookia_store_app/features/home/presentation/widgets/book_item.dart';
 import 'package:bookia_store_app/features/home/presentation/widgets/books_grid_view.dart';
 import 'package:bookia_store_app/features/home/presentation/widgets/home_app_bar.dart';
 import 'package:bookia_store_app/features/home/presentation/widgets/home_slider.dart';

@@ -1,21 +1,29 @@
-class BooksModel {
+class SearchModel {
   DataModel? data;
   String? message;
-
   int? status;
 
-  BooksModel({this.data, this.message, this.status});
+  SearchModel({this.data, this.message, this.status});
 
-  BooksModel.fromJson(Map<String, dynamic> json) {
+  SearchModel.fromJson(Map<String, dynamic> json) {
     data = json['data'] != null ? DataModel.fromJson(json['data']) : null;
     message = json['message'];
-
     status = json['status'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    if (this.data != null) {
+      data['data'] = this.data!.toJson();
+    }
+    data['message'] = message;
+    data['status'] = status;
+    return data;
   }
 }
 
 class DataModel {
-  List<ProductModel>? products;
+  List<SearchResultModel>? products;
 
   DataModel({this.products});
 
@@ -23,13 +31,21 @@ class DataModel {
     if (json['products'] != null) {
       products = [];
       json['products'].forEach((v) {
-        products!.add(ProductModel.fromJson(v));
+        products!.add(SearchResultModel.fromJson(v));
       });
     }
   }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    if (products != null) {
+      data['products'] = products!.map((v) => v.toJson()).toList();
+    }
+    return data;
+  }
 }
 
-class ProductModel {
+class SearchResultModel {
   int? id;
   String? name;
   String? description;
@@ -41,7 +57,7 @@ class ProductModel {
   String? image;
   String? category;
 
-  ProductModel({
+  SearchResultModel({
     this.id,
     this.name,
     this.description,
@@ -54,7 +70,7 @@ class ProductModel {
     this.category,
   });
 
-  ProductModel.fromJson(Map<String, dynamic> json) {
+  SearchResultModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     name = json['name'];
     description = json['description'];

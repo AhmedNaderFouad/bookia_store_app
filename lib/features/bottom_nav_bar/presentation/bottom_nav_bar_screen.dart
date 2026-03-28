@@ -9,6 +9,7 @@ import '../../home/cubit/home_cubit.dart';
 import '../../home/presentation/home_screen.dart';
 
 import '../../profile/presentation/profile_screen.dart';
+import '../../wishlist/cubit/wishlist_cubit.dart';
 import '../../wishlist/presentation/wishlist_screen.dart';
 
 class BottomNavBarScreen extends StatefulWidget {
@@ -21,17 +22,27 @@ class BottomNavBarScreen extends StatefulWidget {
 class _BottomNavBarScreenState extends State<BottomNavBarScreen> {
   int currentIndex = 0;
 
-  List<Widget> screens = [
-    BlocProvider(
-      create: (context) => HomeCubit()..getHomeData(),
+  late final List<Widget> screens;
 
-      child: const HomeScreen(),
-    ),
-
-    WishlistScreen(),
-    CartScreen(),
-    ProfileScreen(),
-  ];
+  @override
+  void initState() {
+    super.initState();
+    screens = [
+      BlocProvider(
+        create: (context) => HomeCubit()..getHomeData(),
+        child: const HomeScreen(),
+      ),
+      WishlistScreen(
+        onBackToHome: () {
+          setState(() {
+            currentIndex = 0;
+          });
+        },
+      ),
+      const CartScreen(),
+      const ProfileScreen(),
+    ];
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +53,6 @@ class _BottomNavBarScreenState extends State<BottomNavBarScreen> {
             currentIndex = index;
           });
         },
-
         items: [
           BottomNavigationBarItem(
             icon: SvgPicture.asset(
@@ -51,10 +61,8 @@ class _BottomNavBarScreenState extends State<BottomNavBarScreen> {
                   ? ColorFilter.mode(AppColor.primaryColor, BlendMode.srcIn)
                   : null,
             ),
-
             label: "",
           ),
-
           BottomNavigationBarItem(
             icon: SvgPicture.asset(
               Assets.icons.bookmark,

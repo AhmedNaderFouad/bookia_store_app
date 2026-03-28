@@ -11,4 +11,6 @@ class Routes {
   static const String createPasswordScreen = "/createPasswordScreen";
   static const String passwordChangedScreen = "/passwordChangedScreen";
   static const String bottomNavBarScreen = "/bottomNavBarScreen";
+  static const String bookDetailsScreen = "/bookDetailsScreen";
+  static const String searchScreen = "/searchScreen";
 }

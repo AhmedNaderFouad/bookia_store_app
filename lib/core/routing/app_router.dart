@@ -12,7 +12,9 @@ import '../../features/authentication/presentation/register_screen.dart';
 import '../../features/bottom_nav_bar/presentation/bottom_nav_bar_screen.dart';
 import '../../features/home/cubit/home_cubit.dart';
 import '../../features/home/presentation/home_screen.dart';
+import '../../features/home/presentation/book_details_screen.dart';
 import '../../features/on_boarding/presentation/welcome_screen.dart';
+import '../../features/search/presentation/search_screen.dart';
 
 class AppRouter {
   Route generateRoute(RouteSettings settings) {
@@ -55,6 +57,17 @@ class AppRouter {
             create: (context) => HomeCubit()..getHomeData(),
             child: const BottomNavBarScreen(),
           ),
+        );
+
+      case Routes.bookDetailsScreen:
+        final args = settings.arguments as int;
+        return MaterialPageRoute(
+          builder: (_) => BookDetailsScreen(bookId: args),
+        );
+
+      case Routes.searchScreen:
+        return MaterialPageRoute(
+          builder: (_) => const SearchScreen(),
         );
 
       default:
